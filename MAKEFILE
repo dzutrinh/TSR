@@ -1,0 +1,54 @@
+########################################################
+# type 'make' at the command line to build all 3 drivers
+# and the 3 viewers (Borland Pascal 7, DOS real mode)
+########################################################
+
+AS=tasm.exe
+AF=/mx
+AL=tlink.exe
+LF=/t /x
+PC=bpc.exe
+PF=-CD
+
+all: cap.com palshot.com clock.com capview.exe dumpview.exe pal2pas.exe
+
+palshot.com: palshot.obj
+	$(AL) $(LF) palshot.obj
+
+cap.com: cap.obj
+	$(AL) $(LF) cap.obj
+
+clock.com: clock.obj
+	$(AL) $(LF) clock.obj
+
+cap.obj: cap.asm snap.inc tsr.inc
+	$(AS) $(AF) cap.asm
+
+palshot.obj: palshot.asm snap.inc tsr.inc
+	$(AS) $(AF) palshot.asm
+
+clock.obj: clock.asm tsr.inc
+	$(AS) $(AF) clock.asm
+
+capview.exe: capview.pas
+	$(PC) $(PF) capview.pas
+
+dumpview.exe: dumpview.pas
+	$(PC) $(PF) dumpview.pas
+
+pal2pas.exe: pal2pas.pas
+	$(PC) $(PF) pal2pas.pas
+
+clean:
+	del cap.com
+	del palshot.com
+	del clock.com
+	del cap.obj
+	del palshot.obj
+	del clock.obj
+	del cap.map
+	del palshot.map
+	del clock.map
+	del capview.exe
+	del dumpview.exe
+	del pal2pas.exe
