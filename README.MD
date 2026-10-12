@@ -1,6 +1,8 @@
 # TSR utilities for DOS
 These are the utilities I coded long ago when I still in university, following the course of Assembly Programming. I thought they were completely lost in the old diskettes but recently found out I have a backup in one of the old HDDs.
 
+They were tested on my old computers (486DX2 66Mhz, Pentium MMX 166Mhz running DOS 6.22/Windows 3.11)
+
 ## CAP.COM
 - VGA Image capture for DOS.
 - This program supports mode 13h (not mode X) and text modes (any rows, the page shown).
